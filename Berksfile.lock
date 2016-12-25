@@ -1,0 +1,20 @@
+DEPENDENCIES
+  build-essential (= 3.2.0)
+  rediscluster
+    path: .
+    metadata: true
+
+GRAPH
+  build-essential (3.2.0)
+    seven_zip (>= 0.0.0)
+  chef_handler (1.3.0)
+  rediscluster (0.1.4)
+    redisio (>= 0.0.0)
+  redisio (2.4.2)
+    build-essential (>= 0.0.0)
+    ulimit (>= 0.1.2)
+  seven_zip (2.0.0)
+    windows (>= 1.2.2)
+  ulimit (0.3.3)
+  windows (1.39.2)
+    chef_handler (>= 0.0.0)
