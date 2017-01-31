@@ -1,30 +1,70 @@
 #!/bin/sh
-# chkconfig: 345 99 01
-# description: redis-slave startup script
+#
+# Simple Redis init.d script conceived to work on Linux systems
+# as it does use of the /proc filesystem.
+#
+# description: Redis is an in memory key-value store database
+#
+### BEGIN INIT INFO
+# Provides: redis-slave
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Required-Start: 
+# Required-Stop: 
+# Description: redis-slave init script
+### END INIT INFO
 
-start() {
-        echo -n "Starting redis-slave"
-        cd <%= node.override['redisio']['install_dir'] %>;<%= node.override['redisio']['install_dir'] %>/src/redis-server --port <%= @slaveport %> --cluster-enabled yes --cluster-config-file <%= node.override['redisio']['install_dir'] %>/node-<%= @slaveport %>.conf --cluster-node-timeout 10000 --appendonly yes --appendfilename appendonly-<%= @slaveport %>.aof --dbfilename dump-<%= @slaveport %>.rdb --logfile <%= node.override['redisio']['install_dir'] %>/<%= @slaveport %>.log --daemonize yes --protected-mode no
-}
+REDISNAME=slave
+REDISPORT=6380
+EXEC="cd <%= node.override['redisio']['install_dir'] %>;<%= node.override['redisio']['install_dir'] %>/src/redis-server <%= node.override['redisio']['install_dir'] %>/redis-slave.conf --port <%= @slaveport %> --cluster-enabled yes --cluster-config-file <%= node.override['redisio']['install_dir'] %>/node-<%= @slaveport %>.conf --cluster-node-timeout 10000 --appendonly yes --appendfilename appendonly-<%= @slaveport %>.aof --dbfilename dump-<%= @slaveport %>.rdb --logfile <%= node.override['redisio']['install_dir'] %>/<%= @slaveport %>.log --daemonize yes --protected-mode no"
+CLIEXEC=/redis-setup/redis-3.2.5/src/redis-cli
 
-stop() {
-       echo -n "Stopping redis-slave"
-       kill -9 $(ps -ax|grep redis|ps axf | grep 6380 | grep -v grep | awk '{print $1}')
-}
+
+PIDFILE=/var/run/redis-slave.pid
+
+ulimit -n 10032
 
 case "$1" in
-  start)
-        start
+    status)
+        if [ -f $PIDFILE ]
+        then
+          echo "redis-$REDISNAME $PIDFILE exists, pid is $(cat $PIDFILE), should be running"
+          ps -p $(cat $PIDFILE) >/dev/null 2>&1
+          exit $?
+        else
+          echo "redis-$REDISNAME $PIDFILE doesn't exist"
+          exit 3
+        fi
         ;;
-  stop)
-        stop
+    start)
+        if [ -f $PIDFILE ]
+        then
+                echo "$PIDFILE exists, process is already running or crashed"
+        else
+                echo "Starting Redis server..."
+                eval $EXEC
+        fi
         ;;
-  restart)
-        stop
-        start
+    stop)
+        if [ ! -f $PIDFILE ]
+        then
+                echo "$PIDFILE does not exist, process is not running"
+        else
+                PID=$(cat $PIDFILE)
+                echo "Stopping ..."
+
+                
+                $CLIEXEC  -p 6380 shutdown
+
+                while [ -x /proc/${PID} ]
+                do
+                    echo "Waiting for Redis to shutdown ..."
+                    sleep 1
+                done
+                echo "Redis stopped"
+        fi
         ;;
-  *)
-        echo $"Usage: $0 {start|stop|restart}"
-        exit 1
+    *)
+        echo "Please use start or stop as first argument"
+        ;;
 esac
-exit 0

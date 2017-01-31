@@ -2,10 +2,15 @@
 # Cookbook Name:: rediscluster
 # Recipe:: redisdb 
 #
-# All rights reserved - Do Not Redistribute
-#
-template "/#{node.override['redisio']['install_dir']}/redis.conf" do
-  source 'redis.conf.erb'
+template "/#{node.override['redisio']['install_dir']}/redis-master.conf" do
+  source 'redis-master.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0664'
+end
+
+template "/#{node.override['redisio']['install_dir']}/redis-slave.conf" do
+  source 'redis-slave.conf.erb'
   owner 'root'
   group 'root'
   mode '0664'
