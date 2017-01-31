@@ -18,6 +18,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[realdoc-repo::altirepo]
       - recipe[rediscluster]
     attributes:
