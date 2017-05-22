@@ -2,6 +2,8 @@
 # Cookbook Name:: rediscluster
 # Recipe:: redisdb 
 #
+# All rights reserved - Do Not Redistribute
+#
 template "/#{node.override['redisio']['install_dir']}/redis-master.conf" do
   source 'redis-master.conf.erb'
   owner 'root'
@@ -34,6 +36,20 @@ template '/etc/rc.d/init.d/redis-slave' do
   variables(
     :slaveport => node['rediscluster']['slaveport']
   )
+end
+
+template "/#{node.override['redisio']['install_dir']}/src/redis-trib.rb" do
+  source 'redis-trib.rb.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
+template "/#{node.override['redisio']['install_dir']}/clusterstatus.sh" do
+  source 'clusterstatus.sh.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
 end
 
 service 'redis-master' do
