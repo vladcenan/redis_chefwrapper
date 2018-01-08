@@ -17,3 +17,6 @@ gem 'berkshelf'
 gem "test-kitchen"
 gem "kitchen-vagrant"
 gem 'kitchen-docker'
+gem "test-kitchen"
+gem 'chefspec'
+gem 'minitest-chef-handler'

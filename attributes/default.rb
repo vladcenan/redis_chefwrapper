@@ -1,8 +1,9 @@
 #
-#Cookbook Name::rediscluster
-#Attributes::rediscluster
+# Cookbook Name::rediscluster
+# Attributes::rediscluster
 #
 # Redis Install attributes
+default['rediscluster']['version'] = '3.2.5'
 default['rediscluster']['download_dir'] = '/redis-setup'
 default['rediscluster']['masterport'] = 6379
 default['rediscluster']['slaveport'] = 6380
@@ -11,7 +12,7 @@ default['rediscluster']['cluster-slave-validity-factor'] = 2
 default['rediscluster']['auto-aof-rewrite-percentage'] = 30
 
 # Override RedisIO attributes
-node.override['redisio']['version'] = '3.2.5'
+node.override['redisio']['version'] = "#{node['rediscluster']['version']}"
 node.override['redisio']['install_dir'] = "#{default['rediscluster']['download_dir']}/redis-#{node.override['redisio']['version']}"
 node.override['redisio']['default_settings']['homedir'] = "#{default['rediscluster']['download_dir']}/redis-#{node.override['redisio']['version']}"
 node.override['redisio']['default_settings']['configdir'] = "#{default['rediscluster']['download_dir']}/redis-#{node.override['redisio']['version']}"
