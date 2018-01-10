@@ -10,6 +10,9 @@ default['rediscluster']['slaveport'] = 6380
 default['rediscluster']['cluster-node-timeout'] = 20000
 default['rediscluster']['cluster-slave-validity-factor'] = 2
 default['rediscluster']['auto-aof-rewrite-percentage'] = 30
+default['rediscluster']['masterlog'] = "#{node['rediscluster']['masterport']}.log"
+default['rediscluster']['slavelog'] = "#{node['rediscluster']['slaveport']}.log"
+default['rediscluster']['backlog_days'] = 90
 
 # Override RedisIO attributes
 node.override['redisio']['version'] = "#{node['rediscluster']['version']}"

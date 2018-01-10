@@ -1,0 +1,222 @@
+{
+  "files": {
+    "rediscluster/recipes/install.rb": {
+      "directory[/redis-setup]": {
+        "name": "directory[/redis-setup]",
+        "source": "rediscluster/recipes/install.rb",
+        "line": 7,
+        "covered": true
+      },
+      "redisio_install[redis-installation]": {
+        "name": "redisio_install[redis-installation]",
+        "source": "rediscluster/recipes/install.rb",
+        "line": 17,
+        "covered": false
+      }
+    },
+    "rediscluster/recipes/redisdb.rb": {
+      "template[//redis-setup/redis-3.2.5/redis-master.conf]": {
+        "name": "template[//redis-setup/redis-3.2.5/redis-master.conf]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 7,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/redis-slave.conf]": {
+        "name": "template[//redis-setup/redis-3.2.5/redis-slave.conf]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 14,
+        "covered": true
+      },
+      "template[/etc/rc.d/init.d/redis-master]": {
+        "name": "template[/etc/rc.d/init.d/redis-master]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 21,
+        "covered": true
+      },
+      "template[/etc/rc.d/init.d/redis-slave]": {
+        "name": "template[/etc/rc.d/init.d/redis-slave]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 31,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/src/redis-trib.rb]": {
+        "name": "template[//redis-setup/redis-3.2.5/src/redis-trib.rb]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 41,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/clusterstatus.sh]": {
+        "name": "template[//redis-setup/redis-3.2.5/clusterstatus.sh]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 48,
+        "covered": true
+      },
+      "service[redis-master]": {
+        "name": "service[redis-master]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 55,
+        "covered": true
+      },
+      "service[redis-slave]": {
+        "name": "service[redis-slave]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 60,
+        "covered": true
+      }
+    },
+    "rediscluster/recipes/logrotate.rb": {
+      "template[/etc/logrotate.d/redis]": {
+        "name": "template[/etc/logrotate.d/redis]",
+        "source": "rediscluster/recipes/logrotate.rb",
+        "line": 7,
+        "covered": true
+      }
+    }
+  },
+  "resources": {
+    "all": {
+      "directory[/redis-setup]": {
+        "name": "directory[/redis-setup]",
+        "source": "rediscluster/recipes/install.rb",
+        "line": 7,
+        "covered": true
+      },
+      "redisio_install[redis-installation]": {
+        "name": "redisio_install[redis-installation]",
+        "source": "rediscluster/recipes/install.rb",
+        "line": 17,
+        "covered": false
+      },
+      "template[//redis-setup/redis-3.2.5/redis-master.conf]": {
+        "name": "template[//redis-setup/redis-3.2.5/redis-master.conf]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 7,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/redis-slave.conf]": {
+        "name": "template[//redis-setup/redis-3.2.5/redis-slave.conf]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 14,
+        "covered": true
+      },
+      "template[/etc/rc.d/init.d/redis-master]": {
+        "name": "template[/etc/rc.d/init.d/redis-master]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 21,
+        "covered": true
+      },
+      "template[/etc/rc.d/init.d/redis-slave]": {
+        "name": "template[/etc/rc.d/init.d/redis-slave]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 31,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/src/redis-trib.rb]": {
+        "name": "template[//redis-setup/redis-3.2.5/src/redis-trib.rb]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 41,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/clusterstatus.sh]": {
+        "name": "template[//redis-setup/redis-3.2.5/clusterstatus.sh]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 48,
+        "covered": true
+      },
+      "service[redis-master]": {
+        "name": "service[redis-master]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 55,
+        "covered": true
+      },
+      "service[redis-slave]": {
+        "name": "service[redis-slave]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 60,
+        "covered": true
+      },
+      "template[/etc/logrotate.d/redis]": {
+        "name": "template[/etc/logrotate.d/redis]",
+        "source": "rediscluster/recipes/logrotate.rb",
+        "line": 7,
+        "covered": true
+      }
+    },
+    "covered": {
+      "directory[/redis-setup]": {
+        "name": "directory[/redis-setup]",
+        "source": "rediscluster/recipes/install.rb",
+        "line": 7,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/redis-master.conf]": {
+        "name": "template[//redis-setup/redis-3.2.5/redis-master.conf]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 7,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/redis-slave.conf]": {
+        "name": "template[//redis-setup/redis-3.2.5/redis-slave.conf]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 14,
+        "covered": true
+      },
+      "template[/etc/rc.d/init.d/redis-master]": {
+        "name": "template[/etc/rc.d/init.d/redis-master]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 21,
+        "covered": true
+      },
+      "template[/etc/rc.d/init.d/redis-slave]": {
+        "name": "template[/etc/rc.d/init.d/redis-slave]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 31,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/src/redis-trib.rb]": {
+        "name": "template[//redis-setup/redis-3.2.5/src/redis-trib.rb]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 41,
+        "covered": true
+      },
+      "template[//redis-setup/redis-3.2.5/clusterstatus.sh]": {
+        "name": "template[//redis-setup/redis-3.2.5/clusterstatus.sh]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 48,
+        "covered": true
+      },
+      "service[redis-master]": {
+        "name": "service[redis-master]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 55,
+        "covered": true
+      },
+      "service[redis-slave]": {
+        "name": "service[redis-slave]",
+        "source": "rediscluster/recipes/redisdb.rb",
+        "line": 60,
+        "covered": true
+      },
+      "template[/etc/logrotate.d/redis]": {
+        "name": "template[/etc/logrotate.d/redis]",
+        "source": "rediscluster/recipes/logrotate.rb",
+        "line": 7,
+        "covered": true
+      }
+    },
+    "uncovered": {
+      "redisio_install[redis-installation]": {
+        "name": "redisio_install[redis-installation]",
+        "source": "rediscluster/recipes/install.rb",
+        "line": 17,
+        "covered": false
+      }
+    }
+  },
+  "totals": {
+    "resources": 11,
+    "covered": 10,
+    "uncovered": 1,
+    "percent": 90.91
+  }
+}
