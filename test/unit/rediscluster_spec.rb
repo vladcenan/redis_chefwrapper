@@ -40,11 +40,15 @@ describe 'rediscluster' do
     expect(chef_run).to create_template('//redis-setup/redis-3.2.5/redis-slave.conf')
   end
 
- it 'creates a template redis trib' do
-   expect(chef_run).to create_template('//redis-setup/redis-3.2.5/src/redis-trib.rb')
- end
+  it 'creates a template redis trib' do
+    expect(chef_run).to create_template('//redis-setup/redis-3.2.5/src/redis-trib.rb')
+  end
 
- it 'creates a template redis cluster status' do
-   expect(chef_run).to create_template('//redis-setup/redis-3.2.5/clusterstatus.sh')
- end
+  it 'creates a template redis cluster status' do
+    expect(chef_run).to create_template('//redis-setup/redis-3.2.5/clusterstatus.sh')
+  end
+
+  it 'creates a template redis logrotate' do
+    expect(chef_run).to create_template('/etc/logrotate.d/redis')
+  end
 end

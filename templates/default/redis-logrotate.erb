@@ -1,0 +1,9 @@
+<% @logfiles.each do |logfile| %>
+  <%= logfile %>
+<% end %>
+  {
+    daily
+    missingok
+    rotate <%= node['rediscluster']['backlog_days'] %>
+    compress
+  }
